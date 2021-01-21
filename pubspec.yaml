@@ -12,6 +12,9 @@ dependencies:
   flutter:
     sdk: flutter
 
+  sembast: ^2.4.8+1
+  path_provider: ^1.6.27
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
