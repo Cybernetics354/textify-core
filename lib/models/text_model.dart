@@ -33,6 +33,15 @@ class TextModel {
 
     return map;
   }
+
+  TextModel.compose(String ctitle, String cdescription, String ccontent) {
+    this.uuid = Uuid().v1();
+    this.title = ctitle;
+    this.description = cdescription;
+    this.dateTime = DateTime.now();
+
+    // TODO :: Compose function
+  }
 }
 
 class TextModelContent {

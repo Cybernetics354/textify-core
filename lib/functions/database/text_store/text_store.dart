@@ -27,7 +27,7 @@ class TextStoreRepository {
     return textModel;
   }
 
-  static Future delete(int index) async {
-    await _folder.delete(await _db, finder: Finder(filter: Filter.equals("index", index)));
+  static Future delete(String uuid) async {
+    await _folder.delete(await _db, finder: Finder(filter: Filter.equals("uuid", uuid)));
   }
 }
