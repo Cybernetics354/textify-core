@@ -1,12 +1,14 @@
+part of textify_core;
+
 class TextModel {
-  int index;
+  String uuid;
   String title;
   String description;
   DateTime dateTime;
   TextModelContent textModelContent;
 
   TextModel({
-    this.index,
+    this.uuid,
     this.title,
     this.description,
     this.dateTime,
@@ -14,7 +16,7 @@ class TextModel {
   });
 
   TextModel.fromMap(Map<String, dynamic> map) {
-    this.index = map["index"];
+    this.uuid = map["uuid"];
     this.title = map["title"];
     this.description = map["description"];
     this.dateTime = DateTime.parse(map["dateTime"]);
@@ -23,7 +25,7 @@ class TextModel {
 
   Map<String, dynamic> toMap() {
     final map = Map<String, dynamic>();
-    map["index"] = this.index;
+    map["uuid"] = this.uuid??Uuid().v1();
     map["title"] = this.title;
     map["description"] = this.description;
     map["dateTime"] = this.dateTime;

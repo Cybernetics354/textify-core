@@ -1,7 +1,4 @@
-import 'package:sembast/sembast.dart';
-import 'package:sembast/utils/value_utils.dart';
-import 'package:textify_core/models/text_model.dart';
-import 'package:textify_core/textify_core.dart';
+part of textify_core;
 
 class TextStoreRepository {
   static final _folderName = "textStoreRepository";
@@ -21,21 +18,12 @@ class TextStoreRepository {
   }
 
   static Future<TextModel> insert(TextModel textModel) async {
-    var key = await _folder.add(await _db, textModel.toMap());
-    var record = _folder.record(key);
-
-    record.put(await _db, {"index": "key"}, merge: true);
-
-    final TextModel _model = textModel;
-    _model.index = key;
-
-    return _model;
+    await _folder.add(await _db, textModel.toMap());
+    return textModel;
   }
 
   static Future<TextModel> update(TextModel textModel) async {
-    var record = _folder.record(textModel.index);
-
-    record.put(await _db, textModel.toMap(), merge: true);
+    _folder.update(await _db, textModel.toMap(), finder: Finder(filter: Filter.equals("uuid", textModel.uuid)));
     return textModel;
   }
 
